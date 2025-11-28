@@ -1,0 +1,69 @@
+--// Intro UI
+--// Free Source
+--// By Rez
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+-- Background
+local Background = Instance.new("Frame")
+Background.Size = UDim2.new(1,0,1,0)
+Background.BackgroundColor3 = Color3.fromRGB(0,0,0)
+Background.BackgroundTransparency = 1
+Background.Parent = ScreenGui
+
+-- Text
+local TextFrame = Instance.new("Frame")
+TextFrame.Size = UDim2.new(1,0,1,0)
+TextFrame.BackgroundTransparency = 1
+TextFrame.Parent = ScreenGui
+
+-- VN
+local LabelVN = Instance.new("TextLabel")
+LabelVN.Size = UDim2.new(1,0,0.1,0)
+LabelVN.Position = UDim2.new(0,0,0.4,0)
+LabelVN.Text = "Vào game để bật script"
+LabelVN.TextColor3 = Color3.fromRGB(255,255,255)
+LabelVN.TextSize = 40 
+LabelVN.Font = Enum.Font.GothamBold
+LabelVN.BackgroundTransparency = 1
+LabelVN.TextTransparency = 1
+LabelVN.Parent = TextFrame
+
+-- EN
+local LabelEN = Instance.new("TextLabel")
+LabelEN.Size = UDim2.new(1,0,0.1,0)
+LabelEN.Position = UDim2.new(0,0,0.5,0)
+LabelEN.Text = "Join the game to enable the script"
+LabelEN.TextColor3 = Color3.fromRGB(255,255,255)
+LabelEN.TextSize = 40
+LabelEN.Font = Enum.Font.GothamBold
+LabelEN.BackgroundTransparency = 1
+LabelEN.TextTransparency = 1
+LabelEN.Parent = TextFrame
+
+-- Hiệu ứng fade
+local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+-- Background hiện dần
+TweenService:Create(Background, tweenInfo, {BackgroundTransparency = 0.3}):Play()
+wait(1.5)
+
+-- Text hiện dần
+TweenService:Create(LabelVN, tweenInfo, {TextTransparency = 0}):Play()
+TweenService:Create(LabelEN, tweenInfo, {TextTransparency = 0}):Play()
+
+wait(4)
+
+-- End
+TweenService:Create(Background, tweenInfo, {BackgroundTransparency = 1}):Play()
+TweenService:Create(LabelVN, tweenInfo, {TextTransparency = 1}):Play()
+TweenService:Create(LabelEN, tweenInfo, {TextTransparency = 1}):Play()
+wait(1.5)
+
+ScreenGui:Destroy()
